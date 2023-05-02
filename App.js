@@ -8,7 +8,13 @@ import {
   FlatList,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
+
+import DeleteImg from './components/images/delete.jpg';
+import RemoveImg from './components/images/remove.png'
+import Tick from './components/images/tickMark.jpg'
+import AddList from './components/images/addList.png'
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -108,13 +114,15 @@ useEffect(() => {
         {!todo?.completed && (
           <TouchableOpacity onPress={() => markTodoComplete(todo.id)}>
             <View style={[styles.actionIcon, {backgroundColor: 'green'}]}>
-              <MaterialIcons name="done" size={20} color="white" />
+            <Image source={Tick} style={{height:40, width:40}}  />
+              {/* <MaterialIcons name="done" size={20} color="white" /> */}
             </View>
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={() => deleteTodo(todo.id)}>
           <View style={styles.actionIcon}>
-            <AntDesign name={'delete'} size={50} color={"black"} />
+            {/* <AntDesign name={'delete'} size={50} color={"black"} /> */}
+            <Image source={RemoveImg} style={{height:28, width:28}}/>
           </View>
         </TouchableOpacity>
       </View>
@@ -135,8 +143,16 @@ useEffect(() => {
           }}>
           TODO APP
         </Text>
-        <AntDesign name="delete" size={25} color="red" onPress={clearAllTodos} />
+
+        {/* <AntDesign name="delete" size={25} color="red" onPress={clearAllTodos} /> */}
+        <TouchableOpacity
+        onPress={clearAllTodos}
+        >
+        <Image source={DeleteImg} style={{height:33, width:33}} />
+        </TouchableOpacity>
+
       </View>
+
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{padding: 20, paddingBottom: 100}}
@@ -154,7 +170,8 @@ useEffect(() => {
         </View>
         <TouchableOpacity onPress={addTodo}>
           <View style={styles.iconContainer}>
-            <MaterialIcons name="add" color="white" size={30} />
+            {/* <MaterialIcons name="add" color="white" size={30} /> */}
+            <Image source={AddList} style={{height:44, width:44}}/>
           </View>
         </TouchableOpacity>
       </View>
@@ -185,7 +202,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     height: 50,
     width: 50,
-    backgroundColor: COLORS.primary,
+    // backgroundColor: COLORS.primary,
     elevation: 40,
     borderRadius: 25,
     justifyContent: 'center',
@@ -204,10 +221,10 @@ const styles = StyleSheet.create({
   actionIcon: {
     height: 25,
     width: 25,
-    backgroundColor: COLORS.white,
+    // backgroundColor: COLORS.white,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     marginLeft: 5,
     borderRadius: 3,
   },
